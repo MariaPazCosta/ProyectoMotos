@@ -1,0 +1,62 @@
+<section class="contact-section">
+    <div class="contact-container">
+
+
+        <div class="contact-info">
+            <h1>Contactanos</h1>
+            <p class="subtitle">
+                Dejanos tu información para que un vendedor se ponga en contacto con vos.
+            </p>
+
+            <ul class="info-list">
+                <li>
+                    <span class="icon">✉️</span>
+                    motor@Shopgmail.com
+                </li>
+                <li>
+                    <span class="icon">🏠</span>
+                    4074 Ebert Summit Suite 375<br />
+                    Lake Leonardchester
+                </li>
+                <li>
+                    <span class="icon">📞</span>
+                    +44 123 654 7890
+                </li>
+            </ul>
+        </div>
+
+
+        <div class="contact-form">
+            <form [formGroup]="contactoForm">
+                <input type="text" placeholder="Nombre" formControlName="nombre" class="formControl" />
+                @if (contactoForm.controls['nombre'].touched) {
+                    @if(contactoForm.controls["nombre"].errors?.["required"]){
+                    <span class="errorText">Por favor ingrese su nombre completo</span>
+                    }
+                }
+
+                <input type="email" placeholder="Email" formControlName="email" />
+                @if (contactoForm.controls['email'].touched) {
+                    @if(contactoForm.controls["email"].errors?.["required"]){
+                        <span class="errorText">Por favor ingrese su correo electrónico</span>
+                    }@else if (contactoForm.controls["email"].errors?.["email"]) {
+                        <span class="errorText">Por favor ingrese un correo válido</span>
+                    }
+                }
+            
+
+                <input type="tel" placeholder="Teléfono" formControlName="telefono" />
+                @if (contactoForm.controls['telefono'].touched) {
+                    @if(contactoForm.controls["telefono"].errors?.["required"]){
+                    <span class="errorText">Por favor ingrese su número de teléfono</span>
+                    }
+                }
+
+                <textarea placeholder="Comentarios" formControlName="mensaje"></textarea>
+    
+                <button type="button" [disabled]="contactoForm.invalid" (click)="onSave()">Enviar</button>
+            </form>
+        </div>
+
+    </div>
+</section>

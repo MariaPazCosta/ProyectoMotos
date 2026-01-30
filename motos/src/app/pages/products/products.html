@@ -1,0 +1,35 @@
+<h2>Nuestros Productos</h2>
+
+<div class="card">
+    <select id="marcas" [(ngModel)]="marcaFiltro" (change)="getProdutByMarca()">
+        <option value="">Buscar Por Marca</option>
+        @for (item of marcas; track $index) {
+        <option value="{{item}}">{{item}}</option>
+        }
+    </select>
+</div>
+
+
+<div class="card">
+
+    @for (item of productos; track $index) {
+
+    <div class="container">
+        <img src="{{item.imagen}}" alt="Imagen de la moto" placeholder="imagen de la moto " class="imagen">
+        <div class="overlay">
+            <div class="text">
+                <h3>Marca: {{item.marca}}</h3>
+                <h3>Modelo: {{item.modelo}}</h3>
+                <p>Precio: US${{item.precio}}</p>
+                <p>Lanzamiento: {{item.fechaLanzamiento}}</p>
+                <p>{{item.descripcion}}</p>
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    }
+</div>
